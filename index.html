@@ -213,7 +213,7 @@ const DIMS={
  dosis:{name:"Dosis",color:"--celeste",sub:"¿Cuánto del programa estamos implementando?",
    ico:'<path d="M12 2v20M2 12h20"/>',
    comps:{ASE:[
-     {id:"cobertura",t:"Cobertura de clases",tag:"Clases",tagc:"--celeste",meta:true,
+     {id:"cobertura",t:"Cobertura de clases",tag:"Clases",tagc:"--celeste",meta:true,sinAvance:true,
       avanceHint:"Indica el número de clases realizadas hasta ahora.",
       paso:"Según la cobertura alcanzada, ¿la meta sigue siendo realista o conviene ajustarla? ¿Qué acción concreta tomaremos el segundo semestre para sostener o mejorar el ritmo de clases?"},
      {id:"ecc",t:"ECC · Estrategias para la Convivencia",tag:"Fuera del aula",tagc:"--naranja",
@@ -223,7 +223,7 @@ const DIMS={
       avanceHint:"Nombra una instancia o forma en que se usó el recurso de Familia.",
       paso:"¿Cómo han respondido las familias al recurso trabajado? ¿Mantendrán ese recurso o sumarán otro el segundo semestre?"}
    ],REL:[
-     {id:"cobertura",t:"Cobertura de clases",tag:"Clases",tagc:"--celeste",meta:true,
+     {id:"cobertura",t:"Cobertura de clases",tag:"Clases",tagc:"--celeste",meta:true,sinAvance:true,
       avanceHint:"Indica el número de clases realizadas hasta ahora.",
       paso:"Según la cobertura alcanzada, ¿la meta sigue siendo realista o conviene ajustarla? ¿Qué acción concreta tomaremos el segundo semestre para sostener o mejorar el ritmo de clases?"},
      {id:"liturgicas",t:"Clases de Fiestas Litúrgicas",tag:"Litúrgicas",tagc:"--naranja",meta:true,
@@ -400,8 +400,10 @@ function renderDims(){
           <button class="sem-btn" data-v="amarillo" type="button"><span class="sem-dot"></span>En proceso</button>
           <button class="sem-btn" data-v="rojo" type="button"><span class="sem-dot"></span>Necesita atención</button>
         </div></div>`;
-      h+=`<div class="row"><div class="row-label"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round">${I.avance}</svg>Avance real <span class="qhint">${avanceHint}</span></div>
+      if(!c.sinAvance){
+        h+=`<div class="row"><div class="row-label"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round">${I.avance}</svg>Avance real <span class="qhint">${avanceHint}</span></div>
         <textarea class="field" data-k="${base}_avance" placeholder="Cuéntanos qué ha pasado hasta ahora..."></textarea></div>`;
+      }
       h+=`<div class="row" style="margin-bottom:0"><div class="row-label"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round">${I.paso}</svg>Próximos pasos <span class="qhint">${paso}</span></div>
         <textarea class="field" data-k="${base}_paso" placeholder="¿Qué haremos en el segundo semestre?"></textarea></div>`;
       h+=`</div>`;
